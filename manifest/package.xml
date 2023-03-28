@@ -36,5 +36,10 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>Blog__c</members>
+        <members>Loan_Application__c</members>
+        <name>CustomObject</name>
+    </types>
     <version>55.0</version>
 </Package>
