@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <description>Batch Apex Errors</description>
+    <environments>Default</environments>
+    <interviewLabel>Batch Apex Errors {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Batch Apex Errors</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create an application log record</description>
+        <name>Create_Log</name>
+        <label>Create Log</label>
+        <locationX>176</locationX>
+        <locationY>194</locationY>
+        <inputAssignments>
+            <field>ExceptionMessage__c</field>
+            <value>
+                <elementReference>$Record.Message</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ExceptionType__c</field>
+            <value>
+                <elementReference>$Record.ExceptionType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>JobScope__c</field>
+            <value>
+                <elementReference>$Record.JobScope</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phase__c</field>
+            <value>
+                <elementReference>$Record.Phase</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StackTrace__c</field>
+            <value>
+                <elementReference>$Record.StackTrace</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TargetName__c</field>
+            <value>
+                <stringValue>Batch Apex Errors</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TargetType__c</field>
+            <value>
+                <stringValue>Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <object>ApplicationLog__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Log</targetReference>
+        </connector>
+        <object>BatchApexErrorEvent</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>
