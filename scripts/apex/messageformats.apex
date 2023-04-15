@@ -61,3 +61,4 @@ RestCallouts.getAnimals();
 RestCallouts.getAirlines();
 RestCallouts.getEmployees();
 RestCallouts.getCaseInfo();
+RestCallouts.postAnimal();

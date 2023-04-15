@@ -135,4 +135,66 @@ public with sharing class RestCallouts {
         System.debug(response.getBody());
         return response;
     }
+
+    //Endpoint: https://th-apex-http-callout.herokuapp.com/animals
+    //Http Method: POST
+    public static HttpResponse postAnimal() {
+        //1. Prepare HttpRequest and wrap all the necessary data in it
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
+        request.setMethod('POST');
+        //set json body
+        request.setBody('{"name":"mighty moose"}');
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        //2. Prepare internet
+        Http http = new Http();
+        
+        //3. Send the request over the internet in order to receive HttpResponse
+        HttpResponse response = http.send(request);
+
+        //4. Process the response
+        System.debug(response.getStatus()); //OK, Created
+        System.debug(response.getStatusCode()); //201, 200
+        System.debug(response.getBody());
+        return response;
+    }
+
+    //Endpoint: https://api.instantwebtools.net/v1/airlines
+    //Http Method: POST
+    @future(callout=true)
+    public static void postAirlines(Id airlineId) {
+        //1. Prepare HttpRequest and wrap all the necessary data in it
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://api.instantwebtools.net/v1/airlines');
+        request.setMethod('POST');
+        //set json body
+        Airlines__c airline = [SELECT Name, Name__c, Country__c, LogoURL__c, Slogan__c, HeadQuaters__c, Website__c, Established__c 
+                                FROM Airlines__c
+                                WHERE Id = :airlineId];
+        AirlinesWrapper wrapper = new AirlinesWrapper(); //EmployeeWrapper.Employee emp = new EmployeeWrapper.Employee();
+        wrapper.country = airline.Country__c;            //emp.
+        wrapper.established = airline.Established__c;
+        wrapper.head_quaters = airline.HeadQuaters__c;
+        wrapper.logo = airline.LogoURL__c;
+        wrapper.name = airline.Name__c;
+        wrapper.slogan = airline.Slogan__c;
+        wrapper.website = airline.Website__c;
+        String body = JSON.serialize(wrapper);
+        request.setBody(body);
+        request.setHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        //2. Prepare internet
+        Http http = new Http();
+
+        //3. Send the request over the internet in order to receive HttpResponse
+        HttpResponse response = http.send(request);
+
+        //4. Process the response
+        if(response.getStatusCode() == 200 || response.getStatusCode() == 201) {
+            System.debug('Data has been sent successfully!');
+        } else {
+            System.debug(response.getBody());
+        }
+    }
 }
