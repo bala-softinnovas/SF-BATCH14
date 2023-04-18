@@ -172,8 +172,8 @@ public with sharing class RestCallouts {
         Airlines__c airline = [SELECT Name, Name__c, Country__c, LogoURL__c, Slogan__c, HeadQuaters__c, Website__c, Established__c 
                                 FROM Airlines__c
                                 WHERE Id = :airlineId];
-        AirlinesWrapper wrapper = new AirlinesWrapper(); //EmployeeWrapper.Employee emp = new EmployeeWrapper.Employee();
-        wrapper.country = airline.Country__c;            //emp.
+        AirlinesWrapper wrapper = new AirlinesWrapper();
+        wrapper.country = airline.Country__c;
         wrapper.established = airline.Established__c;
         wrapper.head_quaters = airline.HeadQuaters__c;
         wrapper.logo = airline.LogoURL__c;

@@ -54,4 +54,52 @@ public with sharing class RestCalloutsTest {
         System.assert(airlines.Id != null);
         Test.stopTest();
     }
+
+    @isTest
+    private static void getEmployeesTest() {
+        Test.startTest();
+        //1. Set the mock
+        RestCalloutsMock mock = new RestCalloutsMock();
+        Test.setMock(HttpCalloutMock.class, mock);
+
+        //2. Make callout
+        HttpResponse response = RestCallouts.getEmployees();
+
+        //3. Perform assertions
+        System.assertEquals(200, response.getStatusCode());
+        System.assertEquals('OK', response.getStatus());
+        Test.stopTest();
+    }
+
+    @isTest 
+    private static void getCaseInfoTest() {
+        Test.startTest();
+        //1. Set the mock
+        RestCalloutsMock mock = new RestCalloutsMock();
+        Test.setMock(HttpCalloutMock.class, mock);
+
+        //2. Make callout
+        HttpResponse response = RestCallouts.getCaseInfo();
+
+        //3. Perform assertions
+        System.assertEquals(200, response.getStatusCode());
+        System.assertEquals('OK', response.getStatus());
+        Test.stopTest();
+    }
+
+    @isTest 
+    private static void postAnimalTest() {
+        Test.startTest();
+        //1. Set the mock
+        RestCalloutsMock mock = new RestCalloutsMock();
+        Test.setMock(HttpCalloutMock.class, mock);
+
+        //2. Make callout
+        HttpResponse response = RestCallouts.postAnimal();
+
+        //3. Perform assertions
+        System.assertEquals(201, response.getStatusCode());
+        System.assertEquals('Created', response.getStatus());
+        Test.stopTest();
+    }
 }

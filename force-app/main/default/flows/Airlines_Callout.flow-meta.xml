@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Airlines_Callout</name>
+        <label>Get Airlines Callout</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <actionName>GetAirlinesInfo.Get Airlines</actionName>
+        <actionType>externalService</actionType>
+        <connector>
+            <targetReference>Create_Airlines_Record</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>AirlinesID</name>
+            <value>
+                <elementReference>Airlines_ID</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Airlines Callout {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Airlines Callout</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Create Airlines Record</description>
+        <name>Create_Airlines_Record</name>
+        <label>Create Airlines Record</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <inputAssignments>
+            <field>Country__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.country</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Established__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.established</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HeadQuaters__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.headx5fquaters</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LogoURL__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.logo</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Slogan__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.slogan</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Website__c</field>
+            <value>
+                <elementReference>Get_Airlines_Callout.2XX.website</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Airlines__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <screens>
+        <description>Screen to collect data from the user : Airlines ID</description>
+        <name>User_Input_Screen</name>
+        <label>User Input Screen</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Airlines_Callout</targetReference>
+        </connector>
+        <fields>
+            <name>Airlines_ID</name>
+            <dataType>String</dataType>
+            <fieldText>Airlines ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Make Callout</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>User_Input_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>

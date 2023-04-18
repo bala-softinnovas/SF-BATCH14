@@ -62,3 +62,6 @@ RestCallouts.getAirlines();
 RestCallouts.getEmployees();
 RestCallouts.getCaseInfo();
 RestCallouts.postAnimal();
+
+//Test SOAP Callouts
+SoapCallouts.getParksByCountry('United States');

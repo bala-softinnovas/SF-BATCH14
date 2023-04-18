@@ -1,7 +1,7 @@
 public with sharing class EmployeeWrapper {
     public Integer error;
     public String msg;
-    public List<EmployeeWrapper.Employee> data;
+    public List<Employee> data;
 
     public class Employee {
         public Integer id;
