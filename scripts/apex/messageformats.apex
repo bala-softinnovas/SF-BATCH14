@@ -65,3 +65,4 @@ RestCallouts.postAnimal();
 
 //Test SOAP Callouts
 SoapCallouts.getParksByCountry('United States');
+SoapCallouts.doAddCallout(10,20);

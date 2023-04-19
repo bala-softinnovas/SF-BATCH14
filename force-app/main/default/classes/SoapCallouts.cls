@@ -6,4 +6,18 @@ public with sharing class SoapCallouts {
         System.debug(parks);
         return parks;
     }
+
+    public static Double doAddCallout(Double a, Double b) {
+        CalculatorServices.CalculatorImplPort calcService = new CalculatorServices.CalculatorImplPort();
+        Double sum = calcService.doAdd(a, b);
+        System.debug(a + ' add ' + b + ' = ' + sum);
+        return sum;
+    }
+
+    public static Double doMultiplyCallout(Double a, Double b) {
+        CalculatorServices.CalculatorImplPort calcService = new CalculatorServices.CalculatorImplPort();
+        Double mult = calcService.doMultiply(a, b);
+        System.debug(a + ' multiply ' + b + ' = ' + mult);
+        return mult;
+    }
 }
