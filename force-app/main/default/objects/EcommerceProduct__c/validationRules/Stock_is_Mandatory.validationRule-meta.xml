@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stock_is_Mandatory</fullName>
+    <active>true</active>
+    <description>Stock should be greater than 0</description>
+    <errorConditionFormula>Stock__c &lt;= 0</errorConditionFormula>
+    <errorMessage>Stock should always be greater than 0. Please enter a number before saving the record.</errorMessage>
+</ValidationRule>
