@@ -7,4 +7,13 @@ public with sharing class OpportunityCtrl {
                 ORDER BY CreatedDate DESC
                 LIMIT 5];
     }
+
+    @AuraEnabled
+    public static List<Opportunity> getOppsByStage(String stage){
+        return [SELECT Id, Name, Type, StageName, Amount, CloseDate
+                FROM Opportunity
+                WHERE StageName = :stage
+                WITH SECURITY_ENFORCED
+                ORDER BY Amount DESC];
+    }
 }
